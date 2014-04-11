@@ -29,7 +29,7 @@ Set comprehensions.
 s = {x for x in 'abracadabra' if x not in 'abc'}    # s = set(['r', 'd'}])
 ```
 ## Dictionaries
-lisp's associative array `((a . 1) (b . 2))` or an unordered_map
+the same as lisp's associative array `((jack . 4098) (sape . 4139))` or an unordered_map
 ```python
 tel = {'jack': 4098, 'sape': 4139}
 tel['guido'] = 4127
