@@ -1,8 +1,9 @@
 ### Namespace
 Namespace is generally implemented in Python by dict.
+```python
 __main__
 __module__
-
+```
 #### Method Objects
 
 ```python
