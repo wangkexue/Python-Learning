@@ -8,31 +8,31 @@ __module__
 
 ```python
 class MyClass:
-  def f(self):
-    print "hello world"
+    def f(self):
+        print "hello world"
 ```
 A call to `x.f()` is exactly equvalent to `MyClass.f(x)`.
 
 #### Class and Instance Variables
 ```python
 class Dog:
-  kind = 'canine'               # class variable shared by all instances (static)
-                                # be careful of mutable class variable
-  def __init__(self, name):
-    self.name = name            # instance variable unique to each instance
+    kind = 'canine'                 # class variable shared by all instances (static)
+                                    # be careful of mutable class variable
+    def __init__(self, name):
+        self.name = name            # instance variable unique to each instance
 ```
 ### Random Remarks
 ```python
 foo = 10
 
-class foo:                      # __main__.foo override the global var
-  foo = 4                       # overrided by method attribute
-  def __init__(self):
-    self.foo = 7                # data attribute override method attribute
-  def foo(self):                # overrided
-    print foo                   # __main__.foo
-    print foo.foo               # 7
-    print foo.foo()             # Runtime error
+class foo:                          # __main__.foo override the global var
+    foo = 4                         # overrided by method attribute
+    def __init__(self):
+        self.foo = 7                # data attribute override method attribute
+    def foo(self):                  # overrided
+        print foo                   # __main__.foo
+        print foo.foo               # 7
+        print foo.foo()             # Runtime error
 ```
 #### Naming Convention
 ```python
@@ -40,12 +40,12 @@ class foo:                      # __main__.foo override the global var
 GLOBAL_VARIABLE = 10
 
 class ClassName(object):
-  CLASS_CONSTANT = 'cc'
-  class_variable = []
-  def mathod_name(self, method_param):
-    local_variable = 1
-    self.instance_variable = 2
-    pass
+    CLASS_CONSTANT = 'cc'
+    class_variable = []
+    def mathod_name(self, method_param):
+        local_variable = 1
+        self.instance_variable = 2
+        pass
 ```
 "Private" instance variables inside an object don't exist in Python. However it's a convention to name `_private_variable`. 
 
@@ -53,21 +53,21 @@ Python also provite _name mangling_ to avoid name clashes in subclass, that is `
 ```python
 class Mapping(object):
 
-  def __init__(self, iterable):
-    self.items_list = [];
-    self.__update(iterable)
+    def __init__(self, iterable):
+        self.items_list = [];
+        self.__update(iterable)
     
-  def update(self, iterable):
-    for item in iterable:
-      self.items_list.append(item)
+    def update(self, iterable):
+        for item in iterable:
+             self.items_list.append(item)
       
-  __update = update              # private copy of update
-                                 # so when subclass override update, __init__ won't be broken
+    __update = update              # private copy of update
+                                   # so when subclass override update, __init__ won't be broken
 class MapplingSubClass(Mapping):
 
-  def update(self, keys, values):
-    for item in zip(keys, values):
-      self.items_list.append(item)
+    def update(self, keys, values):
+        for item in zip(keys, values):
+            self.items_list.append(item)
 ```
 
 Note: code passed to `exec`, `eval()`, `execfile()` does not consider the classname of the involing class to be the current class.
@@ -76,7 +76,7 @@ Note: code passed to `exec`, `eval()`, `execfile()` does not consider the classn
 You can also use an empty class to mimic C "struct".
 ```python
 class Employee:
-  pass
+    pass
   
 jphn = Employee()
 john.name = 'John Doe'
@@ -97,38 +97,38 @@ See [https://www.python.org/download/releases/2.3/mro/] for detail.
 User-defined exceptions are identified by classes as well (so it's possible to create extensible hierachies of exceptions). You can `raise Class` or `raise Instance`.
 ```python
 class B(Exception):
-  pass
+    pass
 class C(B):
-  pass
+    pass
 class D(C):
-  pass
+    pass
   
 for cls in [B, C, D]:
-  try:
-    raise cls()
-  except D:
-    print("D")
-  except C:
-    print("C")
-  except B:
-    print("B")
+    try:
+        raise cls()
+    except D:
+        print("D")
+    except C:
+        print("C")
+    except B:
+        print("B")
 ```
 ### Iterators
 Iterator just call [`__next__()`](https://docs.python.org/3/library/stdtypes.html#iterator.__next__)  and when there is no iterms it raises a [`StopIteration`](https://docs.python.org/3/library/exceptions.html#StopIteration) exception.
 ```python
 class Reverse:
-  """Iterator for looping over a seq reversely 
-     an example of adding iter() to user defined class"""
-  def __init__(self, data):
-    self.data = data
-    self.index = len(data)
-  def __iter__(self):
-    return self
-  def __next__(self):
-    if self.index == 0:
-      raise StopIteration
-    self.index = self.index - 1
-    return self.data[self.index]
+    """Iterator for looping over a seq reversely 
+       an example of adding iter() to user defined class"""
+    def __init__(self, data):
+        self.data = data
+        self.index = len(data)
+    def __iter__(self):
+        return self
+    def __next__(self):
+        if self.index == 0:
+            raise StopIteration
+        self.index = self.index - 1
+        return self.data[self.index]
 ```
 ### Generators
 It uses `for` and `yield` the same way as Scala. (or without `yield` for generating instant var) 
