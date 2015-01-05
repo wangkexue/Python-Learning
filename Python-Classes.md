@@ -134,13 +134,14 @@ class Reverse:
 It uses `for` and `yield` the same way as Scala. (or without `yield` for generating instant var) 
 
 What makes generators so compact is that the `__iter__()` and `__next()__` methods are created automatically, besides local var and execution state is stored between calls.
-### [abc -- Abstract Base Classes](https://docs.python.org/3/library/abc.html)
-
+______
 ### @classmethod @staticmethod
 `@staticmethod` has no obligatory param, and it has no access to the object and its internel. It's just a function bounding to a the class, can be used before initialization.
 
 `@classmethod` with the first parmam as the class (usually named as `cls`), and it also only has access to the class rather than an object instance.
 
-[overloading __init__ in python](http://stackoverflow.com/questions/141545/overloading-init-in-python)
+[overloading `__init__` in python](http://stackoverflow.com/questions/141545/overloading-init-in-python)
 #### style
 see Function and Method Decorators
+______
+### [abc -- Abstract Base Classes](https://docs.python.org/3/library/abc.html)
